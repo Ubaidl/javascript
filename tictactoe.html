@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+               text-align: center;
+               background-color: #548687;
+              
+        }
+        .container{
+            height: 70vh;
+           
+            display: flex;
+        
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        
+        }
+        .game{
+        height: 60vmin;
+        width: 60vmin;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5vmin;
+        background-color: green;
+
+
+        }
+        .box{
+            height: 18vmin;
+            width: 18vmin;
+            background-color: bisque;
+            border: none;
+            border-radius: 5px;
+            font-size: 50px;
+            
+            
+
+        }
+        #reset{
+          width: 100px;
+          
+          border-radius: 5px;
+          padding: 20px;
+          border:none;
+
+        }
+        .congratulation{
+          font-size: 50px;
+          color: red;
+        }
+    </style>
+</head>
+<body>
+   
+
+  <h1>tic tac toe</h1>
+  
+   
+    
+    <div class="container">
+     
+      
+
+     
+        <div class="game">
+
+            <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+
+        </div>
+
+        
+        
+
+
+    </div>
+   
+    <button id="reset">reset</button>
+    <div class="headcontainer">
+   
+      <p id="showmsg">
+       
+      </p>
+      
+     </div>
+    
+</body>
+
+<script>
+    let boxes=document.querySelectorAll(".box");
+    let showans=document.getElementById("showmsg");
+    let turn=true;
+    let reset=document.getElementById("reset");
+
+     let winningpattern=[
+         [0,1,2],
+         [0,3,6],
+         [0,4,8],
+         [1,4,7],
+         [2,5,8],
+         [2,4,6],
+         [3,4,5],
+         [6,7,8],
+
+
+     ];
+
+       boxes.forEach((box)=>{
+        box.addEventListener("click" ,()=>{
+              if(turn){
+                box.innerHTML="O";
+                turn=false;
+                
+              } else{
+                box.innerHTML="x";
+                turn=true;
+                
+              }
+              box.disabled=true;
+                checkwinner();
+             
+             
+             
+
+        })
+         
+        
+       })
+         const showmsg=(winner)=>{
+          showans.innerText=`congrulation winner is ${winner}`;
+          showans.classList.add("congratulation"); 
+                  for(let box of boxes){
+                    box.disabled=true;
+                  }
+          
+         }
+         const showdraw=()=>{
+          const isDraw = Array.from(boxes).every((box) => box.innerText !== "");
+            if(isDraw){
+              showans.innerText="it is tie please try again "
+              showans.classList.add("congratulation"); 
+            }
+         }
+          
+        
+         const checkwinner=()=>{
+
+              for(let pattern of winningpattern){
+                
+                let pos1val=boxes[pattern[0]].innerText;
+                let pos2val=boxes[pattern[1]].innerText;
+                let pos3val=boxes[pattern[2]].innerText;
+               if(pos1val!="" && pos2val!="" && pos3val!=""){
+                if(pos1val==pos2val && pos2val==pos3val){
+                    showmsg(pos1val);
+                 
+                 
+                }
+                  showdraw();
+               }
+              }
+              
+         };
+
+           const resetgam=()=>{
+            for(let box of boxes){
+              box.innerText="";
+              box.disabled=false;
+            }
+            showans.innerText="";
+            turn=true;
+
+           }
+
+          reset.addEventListener("click",resetgam)
+         
+    
+</script>
+</html>

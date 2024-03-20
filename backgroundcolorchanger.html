@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .but {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        
+        #ist {
+            background-color: blue;
+        }
+        
+        #sec {
+            background-color: aquamarine;
+        }
+        
+        #thr {
+            background-color: yellow;
+        }
+        
+        #four {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>background colorchanger</h1>
+    <div class="button-container">
+        <div id="ist" class="but"></div>
+        <div id="sec" class="but"></div>
+        <div id="thr" class="but"></div>
+        <div id="four" class="but"></div>
+    </div>
+
+    <script>
+        let buttons = document.querySelectorAll(".but");
+        let body = document.querySelector("body");
+        buttons.forEach((button) => {
+            button.addEventListener('click', function (e) {
+                if (e.target.id === "ist") {
+                    body.style.backgroundColor = "green";
+                }
+                if (e.target.id === "sec") {
+                    body.style.backgroundColor = "yellow";
+                }
+                if (e.target.id === "thr") {
+                    body.style.backgroundColor = "red";
+                }
+                if (e.target.id === "four") {
+                    body.style.backgroundColor = "blue";
+                }
+            })
+        })
+    </script>
+</body>
+</html>

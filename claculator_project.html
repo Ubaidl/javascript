@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           body{
+            height: 100%;
+           }
+         
+
+        #container{
+            border: 1px solid black;
+            width: 300px;
+           
+
+        }
+        #display{
+            margin: 10px;
+            width: 86%;
+            padding: 5px;
+            background-color: black;
+            color:white;
+            font-size: 20px;
+            text-align: right;
+
+            
+        }
+        #btn_con{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn{
+        width: 80px;
+        height: 80px;
+        margin: 3px;
+        background-color: white;
+        color: black;
+        font-size: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>calculator</h1>
+    <div id="container">
+        <input type="text" id="display" readonly>
+        <div id="btn_con">
+
+            <button class="btn" onclick="clearDiaplay()">c</button>
+            <button class="btn" onclick="addvalue(`1`)">1</button>
+            <button class="btn" onclick="addvalue(`2`)">2</button>
+            <button class="btn" onclick="addvalue(`3`)">3</button>
+            <button class="btn" onclick="addvalue(`4`)">4</button>
+            <button class="btn" onclick="addvalue(`5`)">5</button>
+            <button class="btn" onclick="addvalue(`6`)">6</button>
+            <button class="btn" onclick="addvalue(`7`)">7</button>
+            <button class="btn" onclick="addvalue(`8`)">8</button>
+            <button class="btn" onclick="addvalue(`9`)">9</button>
+            <button class="btn" onclick="addvalue(`0`)">0</button>
+            <button class="btn" onclick="addvalue(`+`)">+</button>
+            <button class="btn" onclick="addvalue(`-`)">-</button>
+            <button class="btn" onclick="addvalue(`*`)">*</button>
+            <button class="btn" onclick="calculate()">=</button>
+            <button class="btn" onclick="addvalue(`/`)">/</button>
+            <button class="btn" onclick="addvalue(`.`)">.</button>
+            <button class="btn" onclick="removedigit()">x</button>
+            <button class="btn" onclick="Ac()">AC</button>
+           
+        </div>
+
+
+    </div>
+
+    <script>
+
+        let displayfield=document.getElementById("display");
+        let value="";
+
+        function addvalue(item){
+            value=value+item;
+            displayfield.value=value;
+            
+        }
+        function Ac(){
+            alert('hello');
+            value="";
+            displayfield.value=0;
+        }
+        function removedigit(){
+            value=value.slice(0,-1);
+            displayfield.value=value;
+        }
+          function calculate(){
+            value=eval(value);
+          displayfield.value=value;
+
+          }
+
+            function clearDiaplay(){
+                value="";
+                displayfield.value=value;
+            }
+    </script>
+   
+    
+</body>
+
+
+</html>
